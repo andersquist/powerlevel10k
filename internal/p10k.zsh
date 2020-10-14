@@ -2311,8 +2311,9 @@ prompt_node_version() {
   if (( _POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY )); then
     _p9k_upglob package.json && return
   fi
-  _p9k_cached_cmd 0 node --version && [[ $_p9k__ret == v?* ]] || return
-  _p9k_prompt_segment "$0" "green" "white" 'NODE_ICON' 0 '' "${_p9k__ret#v}"
+  # _p9k_cached_cmd 0 node --version && [[ $_p9k__ret == v?* ]] || return
+  _p9k__ret=$(node --version)
+  _p9k_prompt_segment "$0" "magenta" "black" 'NODE_ICON' 0 '' "${_p9k__ret#v}"
 }
 
 _p9k_prompt_node_version_init() {
